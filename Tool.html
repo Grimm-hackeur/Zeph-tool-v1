@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARCHANGE TOOL GEN V1</title>
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }.header {
+  background: linear-gradient(to right, #00f2fe, #4facfe);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 6vw;
+  font-weight: bold;
+  padding: 6vw 0;
+  text-align: center;
+}
+
+.deploy-button {
+  background-color: #111;
+  border: none;
+  border-radius: 20px;
+  margin: 3vw auto;
+  padding: 5vw;
+  width: 90%;
+  max-width: 450px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.deploy-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px #00f2fe;
+}
+
+.deploy-title {
+  font-size: 5vw;
+  font-weight: bold;
+  background: linear-gradient(to right, #00f2fe, #4facfe);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.deploy-subtitle {
+  color: #aaa;
+  font-size: 3.5vw;
+}
+
+@media (min-width: 600px) {
+  .deploy-title {
+    font-size: 20px;
+  }
+
+  .deploy-subtitle {
+    font-size: 14px;
+  }
+
+  .header {
+    font-size: 28px;
+  }
+}
+
+.tool-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.tool-container input,
+.tool-container textarea,
+.tool-container button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+}
+
+.tool-container textarea {
+  resize: vertical;
+}
+
+  </style>
+</head>
+<body>
+  <div class="header">ARCHANGE TOOL GEN V1</div>  <button class="deploy-button" onclick="showUbanTool()">
+    <div class="deploy-title">BAN</div>
+    <div class="deploy-subtitle"></div>
+  </button>  <button class="deploy-button" onclick="showUnbanTool()">
+    <div class="deploy-title">UNBAN</div>
+    <div class="deploy-subtitle"></div>
+  </button>  <button class="deploy-button" onclick="window.location.href='https://whatsapp.com/channel/0029Vb65QuI4IBh7NdUQCq3G'">
+    <div class="deploy-title">Chaîne Officielle</div>
+    <div class="deploy-subtitle">Chaîne Officielle</div>
+  </button>  <button class="deploy-button" onclick="window.location.href='https://whatsapp.com/channel/0029Vb5wOSKIt5rxdUGDxo0L'">
+    <div class="deploy-title">Chaîne Support Dev Zephyr</div>
+    <div class="deploy-subtitle">Chaîne Support Dev Zephyr</div>
+  </button>  <button class="deploy-button" onclick="showVirusTool()">
+    <div class="deploy-title">VIRUS</div>
+    <div class="deploy-subtitle">Lancement du virus</div>
+  </button>  <div id="toolSection" class="tool-container"></div>  <script>
+    function showUbanTool() {
+      document.getElementById('toolSection').innerHTML = `
+        <h3>Outil UBAN</h3>
+        <input type="text" id="ubanNumber" placeholder="Numéro WhatsApp (ex: +509...)" />
+        <textarea id="ubanMessage" rows="5" placeholder="Votre message..."></textarea><button onclick="sendUbanEmail()">Envoyer</button>
+  `;
+}
+
+function sendUbanEmail() {
+  const number = document.getElementById('ubanNumber').value;
+  const message = document.getElementById('ubanMessage').value;
+  const email = 'support@support.whatsapp.com';
+  const subject = encodeURIComponent(`Demande de unban de ${number}`);
+  const body = encodeURIComponent(message);
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+}
+
+function showUnbanTool() {
+  document.getElementById('toolSection').innerHTML = `
+    <h3>Outil UNBAN</h3>
+    <input type="text" id="unbanNumber" placeholder="Numéro WhatsApp (ex: +509...)" />
+    <button onclick="sendUnbanEmail()">Envoyer</button>
+  `;
+}
+
+function sendUnbanEmail() {
+  const number = document.getElementById('unbanNumber').value;
+  const email = 'support@support.whatsapp.com';
+  const subject = encodeURIComponent('Request for Permanent Unban of WhatsApp Number Due to Violation');
+  const body = encodeURIComponent(`Dear WhatsApp Support Team,%0A%0AI am writing to request the permanent unbanning of my WhatsApp number, [${number}], which was banned due to a violation of WhatsApp's terms of service. I acknowledge the mistake and sincerely apologize for any inconvenience caused. I assure you that I understand the importance of adhering to the platform's guidelines and am committed to using WhatsApp responsibly in the future. I kindly ask for your understanding and consideration in granting me a second chance to regain access to my account.%0A%0AThank you for your attention to this matter.`);
+  window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+}
+
+function showVirusTool() {
+  document.getElementById('toolSection').innerHTML = `
+    <h3>Outil Virus WhatsApp</h3>
+    <input type="text" id="virusNumber" placeholder="Numéro WhatsApp (ex: 509...)" />
+    <textarea id="virusText" rows="4" placeholder="Message à répéter"></textarea>
+    <input type="number" id="virusCount" placeholder="Nombre de répétitions" />
+    <button onclick="prepareSpamMessage()">Générer</button>
+    <div id="spamReady"></div>
+  `;
+}
+
+function prepareSpamMessage() {
+  const number = document.getElementById('virusNumber').value;
+  const message = document.getElementById('virusText').value;
+  const count = parseInt(document.getElementById('virusCount').value);
+  let fullMessage = '';
+  for (let i = 0; i < count; i++) {
+    fullMessage += message + ' ';
+  }
+  document.getElementById('spamReady').innerHTML = `
+    <p>x${count} terminé. Prêt à envoyer</p>
+    <button onclick="sendSpam('${number}', \`${fullMessage.trim()}\`)">Envoyer</button>
+  `;
+}
+
+function sendSpam(number, message) {
+  const link = `https://wa.me/${number}/?text=${encodeURIComponent(message)}`;
+  window.location.href = link;
+}
+
+  </script>
+</body>
+  </html>
